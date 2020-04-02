@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--&lt;!&ndash;设置加载本地静态资源(DB)，连接数据库-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <context:annotation-config/>
+    <!--第一个数据原配置-->
+    <!-- JNDI获取数据源(使用dbcp连接池) -->
+    <bean id="dataSource1" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.userName}"/>
+        <property name="password" value="${jdbc.Password}"/>
+        <property name="maxActive">
+            <value>255</value>
+        </property>
+        <property name="maxIdle">
+            <value>2</value>
+        </property>
+        <property name="maxWait">
+            <value>120000</value>
+        </property>
+
+    </bean>
+    <bean id="dataSource2" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${jdbc2.driver}"/>
+        <property name="url" value="${jdbc2.url}"/>
+        <property name="username" value="${jdbc2.userName}"/>
+        <property name="password" value="${jdbc2.Password}"/>
+        <property name="maxActive">
+            <value>255</value>
+        </property>
+        <property name="maxIdle">
+            <value>2</value>
+        </property>
+        <property name="maxWait">
+            <value>120000</value>
+        </property>
+
+    </bean>
+
+    <!-- 动态数据源 -->
+    <bean id="dynamicDataSource" class="cn.resturant.util.DynamicDataSource" >
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry value-ref="dataSource1" key="dataSource1"/>
+                <entry value-ref="dataSource2" key="dataSource2"/>
+            </map>
+        </property>
+        <!--数据源1为默认数据源-->
+        <property name="defaultTargetDataSource" ref="dataSource1" >
+        </property>
+    </bean>
+
+
+    <!--    由spring管理mybatis    -->
+    <bean id="sqlSessionFactory"  class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--配置数据源（数据库）-->
+        <property name="dataSource" ref="dynamicDataSource"/>
+        <!--加载mybatis配置文件-->
+<!--        <property name="configLocation" value="classpath:mybatis.xml"/>-->
+        <!-- 给实体类取别名 -->
+        <property name="typeAliasesPackage" value="cn.oupai.entity"/>
+        <property name="mapperLocations" value="classpath:cn/resturant/dao/*.xml"/>
+    </bean>
+    <!--自动扫描mapper文件（spring管理mybatis中的mapper）-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.oupai.dao"/>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dynamicDataSource" />
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+
+
+
+
+    <!--被扫描到的包才可以使用Spring注解-->
+    <context:component-scan base-package="cn.oupai.service"/>
+</beans>
