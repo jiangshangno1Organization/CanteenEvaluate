@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.resturant.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="cn.resturant.entity.User" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="username" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="role" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="memo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="memos" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="memoes" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, password, role, memo, memos, memoes
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.resturant.entity.User" >
+    insert into user (id, username, password, 
+      role, memo, memos, 
+      memoes)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{role,jdbcType=INTEGER}, #{memo,jdbcType=VARCHAR}, #{memos,jdbcType=VARCHAR}, 
+      #{memoes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.resturant.entity.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="role != null" >
+        role,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="memos != null" >
+        memos,
+      </if>
+      <if test="memoes != null" >
+        memoes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="memos != null" >
+        #{memos,jdbcType=VARCHAR},
+      </if>
+      <if test="memoes != null" >
+        #{memoes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.resturant.entity.User" >
+    update user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="memos != null" >
+        memos = #{memos,jdbcType=VARCHAR},
+      </if>
+      <if test="memoes != null" >
+        memoes = #{memoes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.resturant.entity.User" >
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      role = #{role,jdbcType=INTEGER},
+      memo = #{memo,jdbcType=VARCHAR},
+      memos = #{memos,jdbcType=VARCHAR},
+      memoes = #{memoes,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

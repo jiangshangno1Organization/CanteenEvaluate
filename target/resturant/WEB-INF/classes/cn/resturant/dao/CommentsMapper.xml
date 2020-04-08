@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.resturant.dao.CommentsMapper" >
+  <resultMap id="BaseResultMap" type="cn.resturant.entity.Comments" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="parentsid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="comments" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="memo1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="typeid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="memo2" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="date" jdbcType="DATE" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, parentsid, comments, memo1, typeid, memo2, date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from comments
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from comments
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.resturant.entity.Comments" >
+    insert into comments (id, parentsid, comments, 
+      memo1, typeid, memo2, 
+      date)
+    values (#{id,jdbcType=INTEGER}, #{parentsid,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR}, 
+      #{memo1,jdbcType=VARCHAR}, #{typeid,jdbcType=INTEGER}, #{memo2,jdbcType=VARCHAR}, 
+      #{date,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.resturant.entity.Comments" >
+    insert into comments
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parentsid != null" >
+        parentsid,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+      <if test="memo1 != null" >
+        memo1,
+      </if>
+      <if test="typeid != null" >
+        typeid,
+      </if>
+      <if test="memo2 != null" >
+        memo2,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="parentsid != null" >
+        #{parentsid,jdbcType=INTEGER},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="memo1 != null" >
+        #{memo1,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null" >
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="memo2 != null" >
+        #{memo2,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.resturant.entity.Comments" >
+    update comments
+    <set >
+      <if test="parentsid != null" >
+        parentsid = #{parentsid,jdbcType=INTEGER},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="memo1 != null" >
+        memo1 = #{memo1,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null" >
+        typeid = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="memo2 != null" >
+        memo2 = #{memo2,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.resturant.entity.Comments" >
+    update comments
+    set parentsid = #{parentsid,jdbcType=INTEGER},
+      comments = #{comments,jdbcType=VARCHAR},
+      memo1 = #{memo1,jdbcType=VARCHAR},
+      typeid = #{typeid,jdbcType=INTEGER},
+      memo2 = #{memo2,jdbcType=VARCHAR},
+      date = #{date,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
