@@ -6,6 +6,7 @@ package cn.resturant.entity;
 public class Foodex {
     private int id;
     private String name;//食物名称
+    private String url;//图片地址
     private int counts;//评价数量
     private double avgs;//总平均分
     private double  color;//色
@@ -15,9 +16,10 @@ public class Foodex {
     public Foodex() {
     }
 
-    public Foodex(int id, String name, int counts, double avgs, double color, double fragrance, double taste, double shape) {
+    public Foodex(int id, String name, String url, int counts, double avgs, double color, double fragrance, double taste, double shape) {
         this.id = id;
         this.name = name;
+        this.url = url;
         this.counts = counts;
         this.avgs = avgs;
         this.color = color;
@@ -40,6 +42,14 @@ public class Foodex {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public int getCounts() {

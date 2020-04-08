@@ -139,8 +139,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectcombyfood" parameterType="string" resultType="cn.resturant.entity.Commentex">
-     SELECT *,(memo1+memo2+memo3+memo4)/4 AS avgs
+      SELECT *,(memo1+memo2+memo3+memo4)/4 AS avgs
       FROM comments WHERE parentsid=#{id} AND typeid='1'
-
   </select>
 </mapper>

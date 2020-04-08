@@ -9,10 +9,11 @@
       <arg column="memo1" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="memo2" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="memo3" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, cookid, memo1, memo2, memo3
+    id, name, cookid, memo1, memo2, memo3, url
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -26,11 +27,11 @@
   </delete>
   <insert id="insert" parameterType="cn.resturant.entity.Food" >
     insert into food (id, name, cookid, 
-      memo1, memo2, memo3
-      )
+      memo1, memo2, memo3, 
+      url)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{cookid,jdbcType=INTEGER}, 
-      #{memo1,jdbcType=VARCHAR}, #{memo2,jdbcType=VARCHAR}, #{memo3,jdbcType=VARCHAR}
-      )
+      #{memo1,jdbcType=VARCHAR}, #{memo2,jdbcType=VARCHAR}, #{memo3,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.resturant.entity.Food" >
     insert into food
@@ -53,6 +54,9 @@
       <if test="memo3 != null" >
         memo3,
       </if>
+      <if test="url != null" >
+        url,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -72,6 +76,9 @@
       </if>
       <if test="memo3 != null" >
         #{memo3,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -93,6 +100,9 @@
       <if test="memo3 != null" >
         memo3 = #{memo3,jdbcType=VARCHAR},
       </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -102,11 +112,12 @@
       cookid = #{cookid,jdbcType=INTEGER},
       memo1 = #{memo1,jdbcType=VARCHAR},
       memo2 = #{memo2,jdbcType=VARCHAR},
-      memo3 = #{memo3,jdbcType=VARCHAR}
+      memo3 = #{memo3,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selecttodayfood" parameterType="map" resultType="cn.resturant.entity.Foodex">
-   SELECT food.id , food.`name` ,COUNT(*) AS counts ,(AVG(comments.`memo1`)+AVG(comments.`memo2`)+AVG(comments.`memo3`)+AVG(comments.`memo4`))/4 AS avgs,
+   SELECT food.id ,food.url, food.`name` ,COUNT(*) AS counts ,(AVG(comments.`memo1`)+AVG(comments.`memo2`)+AVG(comments.`memo3`)+AVG(comments.`memo4`))/4 AS avgs,
    AVG(comments.`memo1`) AS color,
    AVG(comments.`memo2`) AS fragrance,
    AVG(comments.`memo3`) AS taste,

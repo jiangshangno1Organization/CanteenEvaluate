@@ -13,13 +13,16 @@ public class Food {
 
     private String memo3;
 
-    public Food(Integer id, String name, Integer cookid, String memo1, String memo2, String memo3) {
+    private String url;
+
+    public Food(Integer id, String name, Integer cookid, String memo1, String memo2, String memo3, String url) {
         this.id = id;
         this.name = name;
         this.cookid = cookid;
         this.memo1 = memo1;
         this.memo2 = memo2;
         this.memo3 = memo3;
+        this.url = url;
     }
 
     public Food() {
@@ -72,5 +75,13 @@ public class Food {
 
     public void setMemo3(String memo3) {
         this.memo3 = memo3 == null ? null : memo3.trim();
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 }

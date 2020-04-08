@@ -19,5 +19,5 @@ public interface FoodMapper {
 
     int updateByPrimaryKey(Food record);
 
-    List<Foodex>selecttodayfood(Map<String,Object> map);
+    List<Foodex> selecttodayfood(Map<String,Object> map);
 }
