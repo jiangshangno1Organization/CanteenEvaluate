@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.resturant.dao.FoodMapper" >
+  <resultMap id="BaseResultMap" type="cn.resturant.entity.Food" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cookid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="memo1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="memo2" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="memo3" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, cookid, memo1, memo2, memo3, url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from food
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from food
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.resturant.entity.Food" >
+    insert into food (id, name, cookid, 
+      memo1, memo2, memo3, 
+      url)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{cookid,jdbcType=INTEGER}, 
+      #{memo1,jdbcType=VARCHAR}, #{memo2,jdbcType=VARCHAR}, #{memo3,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.resturant.entity.Food" >
+    insert into food
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="cookid != null" >
+        cookid,
+      </if>
+      <if test="memo1 != null" >
+        memo1,
+      </if>
+      <if test="memo2 != null" >
+        memo2,
+      </if>
+      <if test="memo3 != null" >
+        memo3,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cookid != null" >
+        #{cookid,jdbcType=INTEGER},
+      </if>
+      <if test="memo1 != null" >
+        #{memo1,jdbcType=VARCHAR},
+      </if>
+      <if test="memo2 != null" >
+        #{memo2,jdbcType=VARCHAR},
+      </if>
+      <if test="memo3 != null" >
+        #{memo3,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.resturant.entity.Food" >
+    update food
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cookid != null" >
+        cookid = #{cookid,jdbcType=INTEGER},
+      </if>
+      <if test="memo1 != null" >
+        memo1 = #{memo1,jdbcType=VARCHAR},
+      </if>
+      <if test="memo2 != null" >
+        memo2 = #{memo2,jdbcType=VARCHAR},
+      </if>
+      <if test="memo3 != null" >
+        memo3 = #{memo3,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.resturant.entity.Food" >
+    update food
+    set name = #{name,jdbcType=VARCHAR},
+      cookid = #{cookid,jdbcType=INTEGER},
+      memo1 = #{memo1,jdbcType=VARCHAR},
+      memo2 = #{memo2,jdbcType=VARCHAR},
+      memo3 = #{memo3,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selecttodayfood" parameterType="map" resultType="cn.resturant.entity.Foodex">
+   SELECT food.id ,food.url, food.`name` ,COUNT(*) AS counts ,(AVG(comments.`memo1`)+AVG(comments.`memo2`)+AVG(comments.`memo3`)+AVG(comments.`memo4`))/4 AS avgs,
+   AVG(comments.`memo1`) AS color,
+   AVG(comments.`memo2`) AS fragrance,
+   AVG(comments.`memo3`) AS taste,
+   AVG(comments.`memo4`) AS shape
+   FROM food RIGHT JOIN comments ON food.`id`=comments.`parentsid` AND comments.`typeid`='1'
+WHERE food.`memo1`LIKE concat ('%', #{type},'%') AND food.`name` IS NOT NULL AND food.`memo2`LIKE concat ('%', #{days},'%')
+ GROUP BY food.`id`
+  </select>
+</mapper>

@@ -69,7 +69,7 @@
 <!--        <property name="configLocation" value="classpath:mybatis.xml"/>-->
         <!-- 给实体类取别名 -->
         <property name="typeAliasesPackage" value="cn.oupai.entity"/>
-<!--        <property name="mapperLocations" value="classpath:cn/resturant/dao"/>-->
+        <property name="mapperLocations" value="classpath:cn/resturant/dao/*.xml"/>
     </bean>
     <!--自动扫描mapper文件（spring管理mybatis中的mapper）-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
