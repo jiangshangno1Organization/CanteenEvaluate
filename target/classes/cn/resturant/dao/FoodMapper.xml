@@ -105,13 +105,14 @@
       memo3 = #{memo3,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selecttodayfood" parameterType="int" resultType="cn.resturant.entity.Foodex">
-   SELECT food.id , food.`name` ,COUNT(*) AS counts ,AVG(comments.`memo1`) AS color,
+  <select id="selecttodayfood" parameterType="map" resultType="cn.resturant.entity.Foodex">
+   SELECT food.id , food.`name` ,COUNT(*) AS counts ,(AVG(comments.`memo1`)+AVG(comments.`memo2`)+AVG(comments.`memo3`)+AVG(comments.`memo4`))/4 AS avgs,
+   AVG(comments.`memo1`) AS color,
    AVG(comments.`memo2`) AS fragrance,
    AVG(comments.`memo3`) AS taste,
    AVG(comments.`memo4`) AS shape
    FROM food RIGHT JOIN comments ON food.`id`=comments.`parentsid` AND comments.`typeid`='1'
-WHERE food.`memo1`LIKE concat ('%', #{type},'%') AND food.`name` IS NOT NULL
+WHERE food.`memo1`LIKE concat ('%', #{type},'%') AND food.`name` IS NOT NULL AND food.`memo2`=#{days}
  GROUP BY food.`id`
   </select>
 </mapper>

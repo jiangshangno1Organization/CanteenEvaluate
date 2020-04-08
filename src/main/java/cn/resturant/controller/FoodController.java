@@ -7,6 +7,7 @@ import cn.resturant.entity.Foodex;
 import cn.resturant.service.FoodService;
 import cn.resturant.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * 食物类接口调用control层
  */
+@RestController
 @RequestMapping("/foodcontro")
 public class FoodController {
     @Resource
@@ -27,7 +29,8 @@ public class FoodController {
         return foodService.getlist(num,day);
     }
     @RequestMapping("/getfoodcomm")
-    public List<Commentex>getcomment(int id){
+    public List<Commentex>getcomment(String id){
+        System.out.println(id);
         return commentsMapper.selectcombyfood(id);
     }
 }

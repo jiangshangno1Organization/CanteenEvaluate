@@ -21,6 +21,11 @@
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="login" parameterType="cn.resturant.entity.User" resultType="cn.resturant.entity.User">
+    select
+    <include refid="Base_Column_List" />
+    from user WHERE username=#{username} and password=#{password}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
     where id = #{id,jdbcType=INTEGER}

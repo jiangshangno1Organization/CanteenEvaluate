@@ -18,5 +18,5 @@ public interface CommentsMapper {
 
     int updateByPrimaryKey(Comments record);
 
-    List<Commentex>selectcombyfood(int id);
+    List<Commentex>selectcombyfood(String id);
 }
