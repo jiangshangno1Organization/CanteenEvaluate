@@ -75,12 +75,11 @@
 <!--           selectByExampleQueryId="false">-->
 <!--      </table>-->
 
-        <table tableName="food" domainObjectName="Food"
+        <table tableName="cooker" domainObjectName="Cooker"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="true"/>
-
         </table>
        
 

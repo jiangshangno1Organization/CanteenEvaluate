@@ -142,4 +142,11 @@
       SELECT *,(memo1+memo2+memo3+memo4)/4 AS avgs
       FROM comments WHERE parentsid=#{id} AND typeid='1'
   </select>
+  <select id="selectcookcount" parameterType="int" resultType="int">
+    SELECT COUNT(memo1)FROM comments WHERE typeid='3' AND parentsid=#{id} AND memo1 IS NOT NULL
+  </select>
+  <select id="selectcooksum" parameterType="int" resultType="int">
+        SELECT sum(memo1)FROM comments WHERE typeid='3' AND parentsid=#{id} AND memo1 IS NOT NULL
+
+  </select>
 </mapper>

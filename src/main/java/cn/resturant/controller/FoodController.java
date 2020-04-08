@@ -4,6 +4,7 @@ import cn.resturant.dao.CommentsMapper;
 import cn.resturant.entity.Commentex;
 import cn.resturant.entity.Comments;
 import cn.resturant.entity.Foodex;
+import cn.resturant.entity.dto.EvaluateDto;
 import cn.resturant.service.FoodService;
 import cn.resturant.service.UserService;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,8 +38,7 @@ public class FoodController {
         return commentsMapper.selectcombyfood(id);
     }
     @RequestMapping("/evaluate")//学生点评食物接口
-    public boolean evaluate(){
-
-        return false;
+    public boolean evaluate(EvaluateDto evaluateDto){
+        return foodService.evalute(evaluateDto);
     }
 }

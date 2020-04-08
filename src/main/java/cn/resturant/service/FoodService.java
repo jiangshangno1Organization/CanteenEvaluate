@@ -1,6 +1,7 @@
 package cn.resturant.service;
 
 import cn.resturant.entity.Foodex;
+import cn.resturant.entity.dto.EvaluateDto;
 
 import java.util.List;
 
@@ -9,5 +10,6 @@ import java.util.List;
  */
 public interface FoodService {
     public List<Foodex>getlist(int num,int day);//获取今日三餐菜谱。
+    public boolean evalute(EvaluateDto evaluateDto);
 
 }
