@@ -1,16 +1,52 @@
-/// 获取 morning 所有菜品
-function getAllFoods() {
-    var sb = new stringbuilder();
-    // 获取所有
-    for ( i =0 ;i<=5 ;i++)
-    {
-        var cell = foodsCellInit(i);
-        sb.append(cell);
-    }
-    $("#morning").append(sb.tostring());
+var baseUrl = "http://172.16.1.33:8089/foodcontro/";
+
+
+/// 获取 今日
+function getTodayAllFoods() {
+
+    //morning 所有菜品
+    dataInit('1','1');
+    //lunch 所有菜品
+    dataInit('1','2');
+    //dinner 所有菜品
+    dataInit('1','3');
 }
 
+function getTomorrowAllFoods() {
+    //morning 所有菜品
+    dataInit('2','1');
+    //lunch 所有菜品
+    dataInit('2','2');
+    //dinner 所有菜品
+    dataInit('2','3');
+}
 
+/// 菜品
+///（用餐类型）1为早餐，2为中餐，3为晚餐
+function dataInit(day , num) {
+    var sb = new stringbuilder();
+    var foodsList = getFoodsList(day,num);
+    // 获取所有
+    for (i =0 ;i<foodsList.length ;i++)
+    {
+        var cell = foodsCellInit(foodsList[i]);
+        sb.append(cell);
+    }
+    if (num == '1'){
+        $("#morning").append(sb.tostring());
+    }
+    else  if (num=='2')
+    {
+        $("#lunch").append(sb.tostring());
+    }else  if (num==3)
+    {
+        $("#dinner").append(sb.tostring());
+    }
+
+}
+
+function getLunchFoodsList() {
+}
 
 /// 获取 单个 产品评价列表
 function getfoodEvaluate() {
@@ -24,6 +60,27 @@ function getfoodEvaluate() {
     $("#evaluate").append(sb.tostring());
 }
 
+/// 获取所有食物
+/// （用餐类型）1为早餐，2为中餐，3为晚餐
+/// （今日明日）1为今日，2为明日
+function getFoodsList(day ,num )
+{
+    var res  = null ;
+    $.ajax({
+        type: "GET",
+        url:baseUrl+"getfoodlist",
+        data :{'num' :num, 'day' :day},
+        async: false,
+        error: function (request) {
+            alert("提交失败，请稍后再试。");
+            return null;
+        },
+        success: function (data) {
+            res = eval(data);
+        }
+    });
+    return res;
+}
 
 // function  foodsCellInit(cell) {
 //     var cellHtml =  "<div class='col-1-3 post' style='padding :10px' onclick='fd("+i+")' >\

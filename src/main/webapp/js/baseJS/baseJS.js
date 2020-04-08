@@ -1,11 +1,11 @@
 ﻿/// 首页 foods Cell
 function  foodsCellInit(cell) {
-    var cellHtml =  "<div class='col-1-3 post' style='padding :10px' onclick='fd("+i+")' >\
-        <img src='images/menu-12.jpg' />\
-        <h3>萝卜丝炒牛肉</h3>\
-        <p> 共39 条 评价 .</p> "+
-    "<p>"+i +" 分</p>" +
-    "<div class ='pf'  data-pf='"+i+"' style='cursor: pointer;height:30px'></div></div>";
+    var cellHtml =  "<div class='col-1-3 post' style='padding :10px' onclick='fd("+cell.id+")' >" +
+        "<img src='"+ cell.url+ "' />"+
+        "<h3>"+ cell.name + "</h3>"+
+        "<p> 共 "+ cell.counts + " 条 评价 .</p> "+
+    "<p>"+ cell.avgs +" 分</p>" +
+    "<div class ='pf'  data-pf='"+cell.avgs+"' style='cursor: pointer;height:30px'></div></div>";
     return cellHtml;
 }
 

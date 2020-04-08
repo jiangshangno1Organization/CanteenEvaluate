@@ -49,32 +49,17 @@
 	<header class="zerogrid">
 		<div class="logo">
 			<hr class="line-1">
-			<a href="#">zGoodFood</a>
+			<a href="#">厨师评价</a>
 			<span>Lorem ipsum dolor sit amet</span>
 			<hr class="line-1">
 		</div>
+
 		<div id='cssmenu' class="align-center">
 			<ul>
-			   <li class="active"><a href='index.html'><span>Home</span></a></li>
-			   <li class=' has-sub'><a href='about.html'><span>About</span></a>
-				  <ul >
-					 <li class='has-sub'><a href='#'><span>Item 1</span></a>
-						<ul>
-						   <li><a href='#'><span>Sub Item</span></a></li>
-						   <li class='last'><a href='#'><span>Sub Item</span></a></li>
-						</ul>
-					 </li>
-					 <li class='has-sub'><a href='#'><span>Item 2</span></a>
-						<ul>
-						   <li><a href='#'><span>Sub Item</span></a></li>
-						   <li class='last'><a href='#'><span>Sub Item</span></a></li>
-						</ul>
-					 </li>
-				  </ul>
-			   </li>
-			   <li><a href='menu.html'><span>Menu</span></a></li>
-			   <li><a href='event.html'><span>Events</span></a></li>
-			   <li class='last'><a href='contact.html'><span>Contacts</span></a></li>
+				<li ><a href='z_index.html'><span>今日餐食</span></a></li>
+				<li ><a href='z_indexTomorrow.html'><span>明日菜单</span></a></li>
+				<li class="active"><a href='#'><span>服务员人员评价</span></a></li>
+				<li class='last'><a href='#'><span>服务员人员投诉</span></a></li>
 			</ul>
 		</div>
 	</header>
@@ -83,38 +68,11 @@
 			<div class="wrap-container clearfix">
 				<div id="main-content">
 					<div class="wrap-content zerogrid ">
-						<article class="background-gray">
-							<div class="art-header">
-								<hr class="line-2">
-								<h2>About us</h2>
-							</div>
-							<div class="art-content">
-								<div class="row">
-									<div class="col-1-2">
-										<div class="wrap-col">
-											<div>
-												<img src="images/2.png">
-											</div>
-										</div>
-									</div>
-									<div class="col-1-2">
-										<div class="wrap-col">
-											<div class="row">
-												<div class="t-center" style="padding-top: 40px;">
-													<h3 style="font-size: 26px;">Welcome to <span class="color-red">zGoodFood</span></h3>
-													<p>BECIEGAST NVERITI VITAESAERT ASETY KERTYA ASET APLICA BOSERDE NERAFAE KERTYURAUAS VITAESA ERTYASNEMO FASERANI PTAIADES FERTASERD KERTYASER DAESRAEDS. CASROLERN ATUR AUT ODITAUT. ONSEQUUNTUR MAGNI DOLORES EO QUI RATIONE VOLUPTATEMSEQUI NESCIUNT, NEQPORRO QUISQUAM ESTQUI DOLOREM QUIA DOLOR. BASASAERT, AMET, CONSECTETUR, ADIPISCI VELIT, SED QUIA NON NUMQUAM EIUS MODI TEMPORA.</p>
-													<a href="#" class="button" >More Details</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</article>
+					
 						<article class="background-white">
 							<div class="art-header">
 								<hr class="line-2">
-								<h2>Our cooks</h2>
+								<h2>厨师</h2>
 							</div>
 							<div class="art-content">
 								<div class="row">
@@ -122,7 +80,9 @@
 										<div class="wrap-col post">
 											<img src="images/u1.jpg" alt=""/>
 											<h3>Small Groups</h3>
-											<p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Et vel quod legimus, graeci electram ocurreret at his.</p>
+										<p> 共39 条 评价 .</p>
+										<p>4 分</p>
+										<div class ="pf" data-pf="3"  style="cursor: pointer;height:30px"></div>
 										</div>
 									</div>
 									<div class="col-1-4">
@@ -149,63 +109,70 @@
 								</div>
 							</div>
 						</article>
-						<article class="background-gray">
+						
+						
+						<article class="background-white">
 							<div class="art-header">
 								<hr class="line-2">
-								<h2>Testimonials</h2>
+								<h2>工作人员</h2>
 							</div>
 							<div class="art-content">
-								<strong>“ Aenean ultrices sapien ut justo laoreet eleifend. Pellentesque imperdiet, lorem ut consectetur tincidunt, arcu nisl rhoncus, dignissim sodales magna magna et dui. Donec quis odio blandit arcu tincidunt ultrices sed vitae tortor. Pellentesque tempor auctor sapien eget maximus. Donec auctor sapien massa, ut iaculis justo laoreet sit amet. Sed gravida nisl eget augue ac sodales quam. ”</strong>
 								<div class="row">
-									<div class="col-full">
+									<div class="col-1-4">
 										<div class="wrap-col post">
-											<img src="images/u5.jpg" alt="" style="border-radius: 50%; width: auto;" />
-											<h3>Monica Higgins, Client</h3>
+											<img src="images/u1.jpg" alt=""/>
+											<h3>Small Groups</h3>
+										<p> 共39 条 评价 .</p>
+										<p>4 分</p>
+										<div class ="pf" data-pf="3"  style="cursor: pointer;height:30px"></div>
+										</div>
+										
+										
+									</div>
+									<div class="col-1-4">
+										<div class="wrap-col post">
+											<img src="images/u2.jpg" alt=""/>
+											<h3>Communication</h3>
+											<p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Vel quod legimus, graeci electram ocurreret at his.</p>
+										</div>
+									</div>
+									<div class="col-1-4">
+										<div class="wrap-col post">
+											<img src="images/u3.jpg" alt=""/>
+											<h3>Small Groups</h3>
+											<p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Et vel quod legimus, graeci electram ocurreret at his.</p>
+										</div>
+									</div>
+									<div class="col-1-4">
+										<div class="wrap-col post">
+											<img src="images/u4.jpg" alt=""/>
+											<h3>Communication</h3>
+											<p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Vel quod legimus, graeci electram ocurreret at his.</p>
 										</div>
 									</div>
 								</div>
 							</div>
 						</article>
+						
+				
+						
 					</div>
 				</div>
 			</div>
 		</section>
 		<hr class="line">
 		<!--////////////////////////////////////Footer-->
-		<footer>
-			<div class="wrap-footer">
-				<div class="zerogrid">
-					<div class="row">
-						<div class="col-1-3">
-							<div class="wrap-col">
-								<p>Copyright - Free Html5 Templates designed by ZEROTHEME - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-							</div>
-						</div>
-						<div class="col-1-3">
-							<div class="wrap-col">
-								<ul class="social-buttons">
-									<li><a href="#"><i class="fa fa-twitter"></i></a>
-									</li>
-									<li><a href="#"><i class="fa fa-facebook"></i></a>
-									</li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-1-3">
-							<div class="wrap-col">
-								<ul class="quick-link">
-									<li><a href="#">Privacy Policy</a></li>
-									<li><a href="#">Terms of Use</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-<script src="js/lightbox-plus-jquery.min.js"></script>
+		<script src="js/lightbox-plus-jquery.min.js"></script>
 </div>
 </body>
+<script src="js/jquery.raty.js"></script>
+<script src="js/resturant.js"></script>
+<script src="js/baseJS/baseJS.js"></script>
+<script>
+	$(document).ready(function (){
+		/// 评价星级初始化
+		evaluateStartInit();
+	});
+</script>
+
 </html>
