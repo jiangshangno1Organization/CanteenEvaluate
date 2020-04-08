@@ -2,7 +2,7 @@
 <%@page contentType="text/html charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
-<%--	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>--%>
+	<%--	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>--%>
 	<!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8"/>
@@ -52,30 +52,16 @@
 			<hr class="line-1"/>
 		</div>
 		<div id='cssmenu' class="align-center">
+
 			<ul>
-				<li class="active"><a href='index.html'><span>今日餐食</span></a></li>
-				<!-- <li class=' has-sub'><a href='about.html'><span>明日菜单</span></a> -->
-				<!-- <ul > -->
-				<!-- <li class='has-sub'><a href='#'><span>Item 1</span></a> -->
-				<!-- <ul> -->
-				<!-- <li><a href='#'><span>Sub Item</span></a></li> -->
-				<!-- <li class='last'><a href='#'><span>Sub Item</span></a></li> -->
-				<!-- </ul> -->
-				<!-- </li> -->
-				<!-- <li class='has-sub'><a href='#'><span>Item 2</span></a> -->
-				<!-- <ul> -->
-				<!-- <li><a href='#'><span>Sub Item</span></a></li> -->
-				<!-- <li class='last'><a href='#'><span>Sub Item</span></a></li> -->
-				<!-- </ul> -->
-				<!-- </li> -->
-				<!-- </ul> -->
-				<!-- </li> -->
-				<li><a href='menu.html'><span>明日菜单</span></a></li>
-				<li><a href='event.html'><span>服务员人员评价</span></a></li>
-				<li class='last'><a href='contact.html'><span>服务员人员投诉</span></a></li>
+				<li class="active"><a href='#'><span>今日餐食</span></a></li>
+				<li><a href='z_indexTomorrow.html'><span>明日菜单</span></a></li>
+				<li><a href='z_stemployee.html'><span>服务员人员评价</span></a></li>
+				<li class='last'><a href='#'><span>服务员人员投诉</span></a></li>
 			</ul>
 		</div>
 	</header>
+
 	<!--////////////////////////////////////Container-->
 	<!-- 早餐 -->
 
@@ -103,26 +89,6 @@
 									<p>4 分</p>
 									<div class ="pf" data-pf="3"  style="cursor: pointer;height:30px"></div>
 								</div>
-
-								<!-- <div class="col-1-3 post" style="padding :10px" > -->
-								<!-- <img src="images/menu-12.jpg" alt=""/> -->
-								<!-- <h3>青椒炒肉</h3> -->
-								<!-- <p>His pthis.</p> -->
-								<!-- <div class ="pf" style="cursor: pointer;height:30px"></div> -->
-
-								<!-- </div> -->
-								<!-- <div class="col-1-3 post" style="padding :10px"> -->
-								<!-- <img src="images/menu-12.jpg" alt=""/> -->
-								<!-- <h3>Small Groups</h3> -->
-								<!-- <p>His primis oegimus, graeci electram ocurreret at his.</p> -->
-								<!-- <div class ="pf"  style="cursor: pointer;height:30px"></div> -->
-								<!-- </div> -->
-								<!-- <div class="col-1-3 post"style="padding :10px" > -->
-								<!-- <img src="images/menu-12.jpg" alt=""/> -->
-								<!-- <h3>Small Groups</h3> -->
-								<!-- <p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Et vel quod legimus, graeci electram ocurreret at his.</p> -->
-								<!-- <div class ="pf" style="cursor: pointer;height:30px"></div> -->
-								<!-- </div> -->
 							</div>
 						</div>
 					</article>
@@ -273,9 +239,10 @@
 <script>
 
 	function fd (i){
-		alert(i);
+		jumurl("z_evaluateList.html");
 	}
 
+	/// 获取菜品列表
 	getAllFoods();
 
 	$(document).ready(function (){

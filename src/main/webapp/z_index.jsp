@@ -1,68 +1,76 @@
 <%@ page language="java" import="java.util.*"%>
+<%@page contentType="text/html charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <head>
-
+<%--	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>--%>
 	<!-- Basic Page Needs
   ================================================== -->
-	<meta charset="utf-8">
+	<meta charset="utf-8"/>
 	<title>zGoodFood</title>
-	<meta name="description" content="Free Responsive Html5 Css3 Templates ">
+	<!-- <meta name="description" content="Free Responsive Html5 Css3 Templates "> -->
 
 	<!-- Mobile Specific Metas
     ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 	<!-- CSS
     ================================================== -->
-	<link rel="stylesheet" href="css/zerogrid.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/lightbox.css">
+	<link rel="stylesheet" href="css/zerogrid.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/lightbox.css"/>
 
 	<!-- Custom Fonts -->
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
 
-	<link rel="stylesheet" href="css/menu.css">
+	<link rel="stylesheet" href="css/menu.css"/>
 	<script src="js/jquery1111.min.js" type="text/javascript"></script>
 	<script src="js/script.js"></script>
+	<script src="js/baseJS/baseJS.js?v=1.1" charset="utf-8" type="text/javascript"></script>
+	<script src="js/resturant.js"></script>
+
 
 	<!--[if lt IE 9]>
 	<script src="js/html5.js"></script>
 	<script src="js/css3-mediaqueries.js"></script>
 	<![endif]-->
 
+
 </head>
 
 <body>
+
+
+
+
 <div class="wrap-body">
 	<header class="zerogrid">
 		<div class="logo">
-			<hr class="line-1">
+			<hr class="line-1"/>
 			<a href="#">食堂评价系统</a>
 			<span>Lorem ipsum dolor sit amet</span>
-			<hr class="line-1">
+			<hr class="line-1"/>
 		</div>
 		<div id='cssmenu' class="align-center">
 			<ul>
 				<li class="active"><a href='index.html'><span>今日餐食</span></a></li>
-				<li class=' has-sub'><a href='about.html'><span>明日菜单</span></a>
-					<ul >
-						<li class='has-sub'><a href='#'><span>Item 1</span></a>
-							<ul>
-								<li><a href='#'><span>Sub Item</span></a></li>
-								<li class='last'><a href='#'><span>Sub Item</span></a></li>
-							</ul>
-						</li>
-						<li class='has-sub'><a href='#'><span>Item 2</span></a>
-							<ul>
-								<li><a href='#'><span>Sub Item</span></a></li>
-								<li class='last'><a href='#'><span>Sub Item</span></a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li><a href='menu.html'><span>Menu</span></a></li>
+				<!-- <li class=' has-sub'><a href='about.html'><span>明日菜单</span></a> -->
+				<!-- <ul > -->
+				<!-- <li class='has-sub'><a href='#'><span>Item 1</span></a> -->
+				<!-- <ul> -->
+				<!-- <li><a href='#'><span>Sub Item</span></a></li> -->
+				<!-- <li class='last'><a href='#'><span>Sub Item</span></a></li> -->
+				<!-- </ul> -->
+				<!-- </li> -->
+				<!-- <li class='has-sub'><a href='#'><span>Item 2</span></a> -->
+				<!-- <ul> -->
+				<!-- <li><a href='#'><span>Sub Item</span></a></li> -->
+				<!-- <li class='last'><a href='#'><span>Sub Item</span></a></li> -->
+				<!-- </ul> -->
+				<!-- </li> -->
+				<!-- </ul> -->
+				<!-- </li> -->
+				<li><a href='menu.html'><span>明日菜单</span></a></li>
 				<li><a href='event.html'><span>服务员人员评价</span></a></li>
 				<li class='last'><a href='contact.html'><span>服务员人员投诉</span></a></li>
 			</ul>
@@ -71,37 +79,50 @@
 	<!--////////////////////////////////////Container-->
 	<!-- 早餐 -->
 
+
 	<section id="container">
+
 		<div class="wrap-container clearfix">
+
+
 			<div id="main-content">
+
 				<div class="wrap-content zerogrid ">
 					<article class="background-gray">
+
 						<div class="art-header">
-							<hr class="line-2">
+							<hr class="line-2"/>
 							<h2>早餐</h2>
 						</div>
 						<div class="art-content">
 							<div class="row" id = "morning">
-								<div class="col-1-3 post" style="padding :10px">
+								<div class="col-1-3 post" style="padding :10px" onclick="fd()" >
 									<img src="images/menu-12.jpg" alt=""/>
-									<h3>Small Groups</h3>
-									<p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Et vel quod legimus, graeci electram ocurreret at his.</p>
+									<h3>萝卜丝炒牛肉</h3>
+									<p> 共39 条 评价 .</p>
+									<p>4 分</p>
+									<div class ="pf" data-pf="3"  style="cursor: pointer;height:30px"></div>
 								</div>
-								<div class="col-1-3 post" style="padding :10px" >
-									<img src="images/menu-12.jpg" alt=""/>
-									<h3>Small Groups</h3>
-									<p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Et vel quod legimus, graeci electram ocurreret at his.</p>
-								</div>
-								<div class="col-1-3 post" style="padding :10px">
-									<img src="images/menu-12.jpg" alt=""/>
-									<h3>Small Groups</h3>
-									<p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Et vel quod legimus, graeci electram ocurreret at his.</p>
-								</div>
-								<div class="col-1-3 post"style="padding :10px" >
-									<img src="images/menu-12.jpg" alt=""/>
-									<h3>Small Groups</h3>
-									<p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Et vel quod legimus, graeci electram ocurreret at his.</p>
-								</div>
+
+								<!-- <div class="col-1-3 post" style="padding :10px" > -->
+								<!-- <img src="images/menu-12.jpg" alt=""/> -->
+								<!-- <h3>青椒炒肉</h3> -->
+								<!-- <p>His pthis.</p> -->
+								<!-- <div class ="pf" style="cursor: pointer;height:30px"></div> -->
+
+								<!-- </div> -->
+								<!-- <div class="col-1-3 post" style="padding :10px"> -->
+								<!-- <img src="images/menu-12.jpg" alt=""/> -->
+								<!-- <h3>Small Groups</h3> -->
+								<!-- <p>His primis oegimus, graeci electram ocurreret at his.</p> -->
+								<!-- <div class ="pf"  style="cursor: pointer;height:30px"></div> -->
+								<!-- </div> -->
+								<!-- <div class="col-1-3 post"style="padding :10px" > -->
+								<!-- <img src="images/menu-12.jpg" alt=""/> -->
+								<!-- <h3>Small Groups</h3> -->
+								<!-- <p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Et vel quod legimus, graeci electram ocurreret at his.</p> -->
+								<!-- <div class ="pf" style="cursor: pointer;height:30px"></div> -->
+								<!-- </div> -->
 							</div>
 						</div>
 					</article>
@@ -109,8 +130,8 @@
 					<!-- 午餐 -->
 					<article class="background-gray">
 						<div class="art-header">
-							<hr class="line-2">
-							<h2>早餐</h2>
+							<hr class="line-2"/>
+							<h2>午餐</h2>
 						</div>
 						<div class="art-content">
 							<div class="row">
@@ -161,7 +182,7 @@
 
 					<article class="background-white">
 						<div class="art-header">
-							<hr class="line-2">
+							<hr class="line-2"/>
 							<h2>News archives</h2>
 						</div>
 						<div class="art-content">
@@ -209,7 +230,7 @@
 			</div>
 		</div>
 	</section>
-	<hr class="line">
+	<hr class="line"/>
 	<!--////////////////////////////////////Footer-->
 	<footer>
 		<div class="wrap-footer">
@@ -247,4 +268,21 @@
 	<script src="js/lightbox-plus-jquery.min.js"></script>
 </div>
 </body>
+
+<script src="js/jquery.raty.js"></script>
+<script>
+
+	function fd (i){
+		alert(i);
+	}
+
+	/// 获取菜品列表
+	getAllFoods();
+
+	$(document).ready(function (){
+		/// 评级星级初始化
+		evaluateStartInit();
+	});
+
+</script>
 </html>
