@@ -1,3 +1,5 @@
+<%@ page language="java" import="java.util.*"%>
+<%@page contentType="text/html charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -8,7 +10,7 @@
     <!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8">
-	<title>服务员评价</title>
+	<title>评价列表</title>
 	<meta name="description" content="Free Responsive Html5 Css3 Templates ">
 	
 	
@@ -40,16 +42,16 @@
 	<header class="zerogrid">
 		<div class="logo">
 			<hr class="line-1">
-			<a href="#">我要评价</a>
+			<a href="#">服务员评价</a>
 			<span>Lorem ipsum dolor sit amet</span>
 			<hr class="line-1">
 		</div>
 		<div id='cssmenu' class="align-center">
 
 			<ul>
-				<li ><a href='z_index.html'><span>今日餐食</span></a></li>
-				<li><a href='z_indexTomorrow.html'><span>明日菜单</span></a></li>
-				<li class="active"><a href='z_stemployee.html'><span>服务员人员评价</span></a></li>
+				<li ><a href='z_index.jsp'><span>今日餐食</span></a></li>
+				<li><a href='z_indexTomorrow.jsp'><span>明日菜单</span></a></li>
+				<li class="active"><a href='z_stemployee.jsp'><span>服务员人员评价</span></a></li>
 				<li class='last'><a href='#'><span>服务员人员投诉</span></a></li>
 			</ul>
 		</div>
@@ -61,47 +63,52 @@
 					<div class="wrap-content zerogrid ">
 						<article class="background-gray">
 
-							<div class="art-content">
-								<div class="row">
-									<div class="col-full">
-										<div class="wrap-col post">
-											<img id="pic" src="images/u5.jpg" alt="" style="border-radius: 50%; width: auto;" />
-											<h3 id="name">姓名：小童</h3>
+								<div class="art-content">
+									<div class="row">
+										<div class="col-full">
+											<div class="wrap-col post">
+												<img id="pic" src="images/u5.jpg" alt="" style="border-radius: 50%; width: auto;" />
+												<h3 id="name">姓名：小童</h3>
+											</div>
 										</div>
 									</div>
+									<br/>
+									<br/>
+									<strong id="mes">“自我介绍 简介 Aenean ultrices sapien ut justo laoreet eleifend. Pellentesque imperdiet, lorem ut consectetur tincidunt, arcu nisl rhoncus, dignissim sodales magna magna et dui. Donec quis odio blandit arcu tincidunt ultrices sed vitae tortor. Pellentesque tempor auctor sapien eget maximus. Donec auctor sapien massa, ut iaculis justo laoreet sit amet. Sed gravida nisl eget augue ac sodales quam. ”</strong>
 								</div>
-								<br/>
-								<br/>
-								<strong id="mes">“自我介绍 简介 Aenean ultrices sapien ut justo laoreet eleifend. Pellentesque imperdiet, lorem ut consectetur tincidunt, arcu nisl rhoncus, dignissim sodales magna magna et dui. Donec quis odio blandit arcu tincidunt ultrices sed vitae tortor. Pellentesque tempor auctor sapien eget maximus. Donec auctor sapien massa, ut iaculis justo laoreet sit amet. Sed gravida nisl eget augue ac sodales quam. ”</strong>
+							<a onclick="toEvaluate()" class="button" >去评价</a>
+
+						</article>
+						<article class="background-white">
+							<div class="art-header">
+								<hr class="line-2">
+								<h2>评价列表</h2>
 							</div>
 
-							<div class="row">
-								<div id="contact_form">
-									<form name="form1" id="ff">
-										<br/>
-										<br/>
-										<div class="wrap-col">
-											<h2>我的评价</h2>
-										</div>
-										<hr class="line-2">
-										<br/>
-										<br/>
-										<label class="row">
-											<div class="wrap-col">
-													<textarea name="message" id="fwypl" class="form-control" rows="2" cols="15" required="required"
-															  placeholder="请输入我的评价"></textarea>
-											</div>
-										</label>
-										<br/>
-										<br/>
-										<br/>
-										<center>
-											<input class="sendButton"  type="button" name="Submit" onclick="commitEmployeeEvaluate()" value="提交"/>
-										</center>
-									</form>
-								</div>
-							</div>
+							<div id='evaluate' class="art-content">
+<!--								<div class="row">-->
+<!--									<HR style="FILTER:progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)"width="100%" color=#987cb9 SIZE=1>-->
+<!--								<div >-->
 
+<!--								<div class="row">-->
+<!--										<div class="col-1-1">-->
+<!--											<div class="wrap-col post" >-->
+<!--												<span >2020-04-05 12:52</span>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
+
+<!--									<div class="row">-->
+<!--										<div class="col-1-1">-->
+<!--											<div class="wrap-col" >-->
+<!--												<span >很好吃的评价模板</span>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
+
+<!--									</div>-->
+<!--								</div>-->
+							</div>
 						</article>
 						</div>
 					</div>
@@ -115,17 +122,17 @@
 
 </div>
 </body>
-<script src="js/jquery.raty.js"></script>
 <script>
-
 	var employeeID = getQueryString('id') ;
 
 	/// 服务员详情加载
 	getEmployeeDetail(employeeID);
 
-	$(document).ready(function (){
-		/// 评价星级初始化
-		evaluateStartInit();
-	});
+	/// 服务员所有评价加载
+	getEmployeeEvaluate(employeeID);
+	/// 去评论
+	function toEvaluate() {
+		window.location.href = "z_employeeEvaluate.jsp?id="+employeeID;
+	}
 </script>
 </html>

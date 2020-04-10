@@ -1,6 +1,6 @@
-﻿/// 首页 foods Cell
+﻿/// 首页 foods cell
 function  foodsCellInit(cell) {
-    var cellHtml =  "<div class='col-1-3 post' style='padding :10px' onclick='fd("+cell.id+")' >" +
+    var cellHtml =  "<div class='col-1-3 post' style='padding :10px' onclick='jumpEvaluateList("+cell.id+")' >" +
         "<img src='"+ cell.url+ "' />"+
         "<h3>"+ cell.name + "</h3>"+
         "<p> 共 "+ cell.counts + " 条 评价 .</p> "+
@@ -9,20 +9,14 @@ function  foodsCellInit(cell) {
     return cellHtml;
 }
 
-/// 页面跳转
-function jumurl(target){
-    window.location.href = target;
-}
-
-
 /// 评价 cell
 function foodEvaluateCell(cell) {
     // time
     // mess
     // 4 fen
-    var mess =  "很好吃" ;
-    var time = "2020-04-05 12:52" ;
-    var fen = 3;
+    var mess =  cell.comments ;
+    var time = cell.date ; //"2020-04-05 12:52" ;
+    var fen = cell.avgs;
     var cellHtml = "\t<div class=\"row\">\n" +
         "\t\t\t\t\t\t\t\t<HR style=\"FILTER:progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)\"width=\"100%\" color=#987cb9 SIZE=1>\n" +
         "\t\t\t\t\t\t\t\t<div >\n" +
@@ -52,6 +46,65 @@ function foodEvaluateCell(cell) {
         return cellHtml;
 }
 
+/// 服务员 cell
+function employeeCell(cell) {
+    var name = cell.name ;
+    var sex =  cell.sex ;
+    var age =  cell.age;
+    var pl = '共 '+ cell.avgs +' 条 评价 .';
+    var htmlCell =
+        "\t<div  class=\"col-1-4\" onclick='jumpEmployeeEvaluateList(" + cell.id + ")'>" +
+        "<div class=\"wrap-col post\">\n" +
+        "\t\t\t\t\t\t\t\t\t\t\t<img src='"+cell.memo +"' alt=\"\"/>\n" +
+        "\t\t\t\t\t\t\t\t\t\t\t<h3>"+name+"</h3>\n" +
+        "\t\t\t\t\t\t\t\t\t\t\t<br/>\n" +
+        "\t\t\t\t\t\t\t\t\t\t\t<p1>年龄 "+age+"</p1>\n" +
+        "\t\t\t\t\t\t\t\t\t\t\t<p> "+sex +" </p>\n" +
+        "\t\t\t\t\t\t\t\t\t\t\t<p>"+pl+"</p>\n" +
+        "\t\t\t\t\t\t\t\t\t\t</div>" +
+        "</div>";
+    return htmlCell;
+}
+
+/// 服务员评价 cell
+function employeeEvaluateCell(cell) {
+    // time
+    // mess
+    var mess = cell.comments ; // "不错哦" ;  //cell.comments ;
+    var time = cell.date ;// "2020-04-05 12:52" ; //cell.date ;
+    var cellHtml =  "\t<div class=\"row\">\n" +
+        "\t\t\t\t\t\t\t\t<HR style=\"FILTER:progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)\"width=\"100%\" color=#987cb9 SIZE=1>\n" +
+        "\t\t\t\t\t\t\t\t<div >\n" +
+        "\t\t\t\t\t\t\t\t\t<div class=\"row\"> \n" +
+        "\t\t\t\t\t\t\t\t\t\t<div class=\"col-1-1\">\n" +
+        "\t\t\t\t\t\t\t\t\t\t\t<div class=\"wrap-col post\" >\n" +
+        "\t\t\t\t\t\t\t\t\t\t\t\t<span >"+time+"</span>\n" +
+        "\t\t\t\t\t\t\t\t\t\t\t</div>\t\t\n" +
+        "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+        "\t\t\t\t\t\t\t\t\t</div>\n" +
+        "\t\t\t\t\t\t\t\t\t<div class=\"row\"> \n" +
+        "\t\t\t\t\t\t\t\t\t\t<div class=\"col-1-1\">\n" +
+        "\t\t\t\t\t\t\t\t\t\t\t<div class=\"wrap-col\" >\n" +
+        "\t\t\t\t\t\t\t\t\t\t\t\t<span > "+mess+"</span>\n" +
+        "\t\t\t\t\t\t\t\t\t\t\t</div>\n" +
+        "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+        "\t\t\t\t\t\t\t\t\t</div>\n" +
+        "\t\t\t\t\t\t\t\t</div>\n" +
+        "\t\t\t\t\t\t\t</div>";
+    return cellHtml;
+}
+
+/// 食物评论页面跳转
+function jumpEvaluateList(id){
+    window.location.href = "z_evaluateList.jsp?id="+id;
+}
+
+/// 服务员评论页面跳转
+function jumpEmployeeEvaluateList(id){
+    window.location.href = "z_employeeEvaluateList.jsp?id="+id;
+}
+
+
 /// string List 拼接类
 function stringbuilder()
 {
@@ -72,4 +125,14 @@ function evaluateStartInit() {
         var pf = $(this).data('pf')*1;
         $(this).raty({ score: pf ,number: 5});
     });
+}
+
+/// 获取url参数
+function getQueryString(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) {
+        return unescape(r[2]);
+    }
+    return null;
 }

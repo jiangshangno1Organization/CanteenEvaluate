@@ -68,7 +68,7 @@
 									<div class="col-1-2">
 										<div class="wrap-col">
 											<div>
-												<img src="images/2.png">
+												<img id="pic" src="images/2.png">
 											</div>
 										</div>
 									</div>
@@ -76,8 +76,8 @@
 										<div class="wrap-col">
 											<div class="row">
 												<div class="t-center" style="padding-top: 40px;">
-													<h3 style="font-size: 26px;">Welcome to <span class="color-red">zGoodFood</span></h3>
-													<p>BECIEGAST NVERITI VITAESAERT ASETY KERTYA ASET APLICA BOSERDE NERAFAE KERTYURAUAS VITAESA ERTYASNEMO FASERANI PTAIADES FERTASERD KERTYASER DAESRAEDS. CASROLERN ATUR AUT ODITAUT. ONSEQUUNTUR MAGNI DOLORES EO QUI RATIONE VOLUPTATEMSEQUI NESCIUNT, NEQPORRO QUISQUAM ESTQUI DOLOREM QUIA DOLOR. BASASAERT, AMET, CONSECTETUR, ADIPISCI VELIT, SED QUIA NON NUMQUAM EIUS MODI TEMPORA.</p>
+													<h3 style="font-size: 26px;"><span id="name" class="color-red">菜品信息</span></h3>
+													<p id="mes">BECIEGAST NVERITI VITAESAERT ASETY KERTYA ASET APLICA BOSERDE NERAFAE KERTYURAUAS VITAESA ERTYASNEMO FASERANI PTAIADES FERTASERD KERTYASER DAESRAEDS. CASROLERN ATUR AUT ODITAUT. ONSEQUUNTUR MAGNI DOLORES EO QUI RATIONE VOLUPTATEMSEQUI NESCIUNT, NEQPORRO QUISQUAM ESTQUI DOLOREM QUIA DOLOR. BASASAERT, AMET, CONSECTETUR, ADIPISCI VELIT, SED QUIA NON NUMQUAM EIUS MODI TEMPORA.</p>
 <!--													<a href="#" class="button" >More Details</a>-->
 												</div>
 											</div>
@@ -201,7 +201,7 @@
 											<br/>
 											<br/>
 
-											<center><input class="sendButton" type="submit" name="Submit" onclick="commitEvaluate()" value="提交"></center>
+											<center><input class="sendButton" type="button" name="Submit" onclick="commitEvaluate()" value="提交"></center>
 
 										</form>
 									</div>
@@ -221,6 +221,13 @@
 <script src="js/jquery.raty.js"></script>
 
 <script>
+
+	var foodsID = getQueryString('id') ;
+
+	/// 菜品详情信息加载
+	getFoodDetail(foodsID);
+
+
 	$(document).ready(function (){
 		/// 评价星级初始化
 		evaluateStartInit();

@@ -1,4 +1,4 @@
-var baseUrl = "http://172.16.1.33:8089/foodcontro/";
+﻿var baseUrl = "http://172.16.1.33:8089/foodcontro/";
 var baseS = "http://172.16.1.33:8089/";
 
 
@@ -73,10 +73,49 @@ function getEmployeeEvaluateList(employeeID) {
     $.ajax({
         type: "GET",
         url:baseS+"user/getcookerorsecomm",
-        data :{'id' :employeeID, 'typeid': '3'},
+        data :{'id' :employeeID, 'typeid': '2'},
         async: false,
         error: function (request) {
             alert("获取人员评价列表信息失败，请稍后再试。");
+            return null;
+        },
+        success: function (data) {
+            res = eval(data);
+        }
+    });
+    return res;
+}
+
+/// 获取 food 详细信息
+function getFoodDetailData(foodsID) {
+    var res  = null ;
+    $.ajax({
+        type: "GET",
+        url:baseS+"foodcontro/getfooddetail",
+        data :{'id' :foodsID},
+        async: false,
+        error: function (request) {
+            alert("获取 food 详细信息失败，请稍后再试。");
+            return null;
+        },
+        success: function (data) {
+            res = eval(data);
+        }
+    });
+    return res;
+}
+
+/// 获取 服务员 详细信息
+function getEmployeeDetailData(employeeID) {
+    var res  = null ;
+    $.ajax({
+        type: "GET",
+        url:baseS+"foodcontro/getselldetail",
+        data :{'id' :employeeID},
+        dataType : 'JSON' ,
+        async: false,
+        error: function (request) {
+            alert("获取 服务员 详细信息失败，请稍后再试。");
             return null;
         },
         success: function (data) {
@@ -99,51 +138,54 @@ function commitEvaluate() {
     var cy =  $('#cy').children().last().val() ;
     //var fw =  $('#fw').children().last().val() ;
     var cspj =  $('#cspj').val() ;
+    /// {"cooksmemo1":"厨师评论","cooksmemo2":"厨师评分","memo4":"菜品形","memo3":"菜品味","memo2":"菜品香","memo1":"菜品色","id":0,"foodcomments":"菜品具体评论"}
+    var data=  {'cooksmemo1' :cspj,'cooksmemo2':cy , 'memo4':xing ,'memo3':wei,'memo2': xian ,'memo1':se ,"id":foodsID,"foodcomments":sppj};
+    var datas=   JSON.stringify(data) ; // datajson.dumps(datas,separators=(',',':'));
     $.ajax({
         type: "POST",
         url: baseS + "foodcontro/evaluate",//baseUrl+"getfoodlist",
-        /// {"cooksmemo1":"厨师评论","cooksmemo2":"厨师评分","memo4":"菜品形","memo3":"菜品味","memo2":"菜品香","memo1":"菜品色","id":0,"foodcomments":"菜品具体评论"}
-        data :{'cooksmemo1' :cspj,'cooksmemo2':cy , 'memo4':xing ,'memo3':wei,'memo2': xian ,'memo1':se ,"id":foodsID,"foodcomments":sppj},
+        headers : {"Content-Type" :"application/json" } ,
+        data :datas ,
         async: false,
         error: function (request) {
             alert("提交失败，请稍后再试。");
         },
         success: function (data) {
-            alert('提交成功' + data);
-            // window.location.href="tsList.html";
+            alert('提交成功');
+            window.location.href="z_evaluateList.jsp?id=" + foodsID;
         }
     });
 }
 
 /// 提交 服务员 评价
 function commitEmployeeEvaluate() {
-
     var employeeID = getQueryString('id') ;
     var cspj =  $('#fwypl').val() ;
-
     if (employeeID==null ||employeeID.length<=0)
     {
         alert('无法获取评价对象，请返回重试。');
         return ;
     }
-
     if (cspj==null ||cspj.length<=0)
     {
         alert('请输入评价');
         return ;
     }
-
+    var data= {'id' :employeeID,'sellercomments':cspj };
+    var datas= JSON.stringify(data) ; // datajson.dumps(datas,separators=(',',':'));
     $.ajax({
         type: "POST",
+        headers : {"Content-Type" :"application/json" } ,
         url:  baseS + "user/evaulatsell",//baseUrl+"getfoodlist",
-        data :{'id' :employeeID,'sellercomments':cspj },
+        data : datas,
+        dataType : 'JSON' ,
         async: false,
         error: function (request) {
             alert("提交失败，请稍后再试。");
         },
         success: function (data) {
-            alert('提交成功' + data);
-            // window.location.href="tsList.html";
+            alert('提交成功');
+            window.location.href="z_employeeEvaluateList.jsp?id=" + employeeID;
         }
     });
 }

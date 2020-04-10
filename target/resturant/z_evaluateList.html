@@ -29,7 +29,13 @@
 	<link rel="stylesheet" href="css/menu.css">
 	<script src="js/jquery1111.min.js" type="text/javascript"></script>
 	<script src="js/script.js"></script>
-	
+
+
+	<script src="js/baseJS/food.js?v=1.1" charset="utf-8" type="text/javascript"></script>
+	<script src="js/baseJS/apiRequest.js?v=1.1" charset="utf-8" type="text/javascript"></script>
+	<script src="js/baseJS/baseJS.js?v=1.1" charset="utf-8" type="text/javascript"></script>
+
+
 	<style>
 	
 	</style>
@@ -70,7 +76,7 @@
 									<div class="col-1-2">
 										<div class="wrap-col">
 											<div>
-												<img src="images/2.png">
+												<img id="pic" src="images/2.png">
 											</div>
 										</div>
 									</div>
@@ -78,9 +84,9 @@
 										<div class="wrap-col">
 											<div class="row">
 												<div class="t-center" style="padding-top: 40px;">
-													<h3 style="font-size: 26px;">Welcome to <span class="color-red">zGoodFood</span></h3>
-													<p>食材工艺介绍 BECIEGAST NVERITI VITAESAERT ASETY KERTYA ASET APLICA BOSERDE NERAFAE KERTYURAUAS VITAESA ERTYASNEMO FASERANI PTAIADES FERTASERD KERTYASER DAESRAEDS. CASROLERN ATUR AUT ODITAUT. ONSEQUUNTUR MAGNI DOLORES EO QUI RATIONE VOLUPTATEMSEQUI NESCIUNT, NEQPORRO QUISQUAM ESTQUI DOLOREM QUIA DOLOR. BASASAERT, AMET, CONSECTETUR, ADIPISCI VELIT, SED QUIA NON NUMQUAM EIUS MODI TEMPORA.</p>
-													<a href="z_evaluate.html" class="button" >去评价</a>
+													<h3 style="font-size: 26px;"> <span id="name" class="color-red">菜品名称</span></h3>
+													<p id="mes">食材工艺介绍 BECIEGAST NVERITI VITAESAERT ASETY KERTYA ASET APLICA BOSERDE NERAFAE KERTYURAUAS VITAESA ERTYASNEMO FASERANI PTAIADES FERTASERD KERTYASER DAESRAEDS. CASROLERN ATUR AUT ODITAUT. ONSEQUUNTUR MAGNI DOLORES EO QUI RATIONE VOLUPTATEMSEQUI NESCIUNT, NEQPORRO QUISQUAM ESTQUI DOLOREM QUIA DOLOR. BASASAERT, AMET, CONSECTETUR, ADIPISCI VELIT, SED QUIA NON NUMQUAM EIUS MODI TEMPORA.</p>
+													<a onclick="toEvaluate()" class="button" >去评价</a>
 												</div>
 											</div>
 										</div>
@@ -93,9 +99,9 @@
 								<hr class="line-2">
 								<h2>评价列表</h2>
 							</div>
-							
-							<div id='evaluate' class="art-content">
 
+
+							<div id='evaluate' class="art-content">
 								<div class="row">
 									<HR style="FILTER:progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)"width="100%" color=#987cb9 SIZE=1>
 									<div >
@@ -122,25 +128,13 @@
 										</div>
 									</div>
 								</div>
+
 							</div>
+
+
+
 						</article>
-						<article class="background-gray">
-							<div class="art-header">
-								<hr class="line-2">
-								<h2>Testimonials</h2>
-							</div>
-							<div class="art-content">
-								<!-- <strong>“ Aenean ultrices sapien ut justo laoreet eleifend. Pellentesque imperdiet, lorem ut consectetur tincidunt, arcu nisl rhoncus, dignissim sodales magna magna et dui. Donec quis odio blandit arcu tincidunt ultrices sed vitae tortor. Pellentesque tempor auctor sapien eget maximus. Donec auctor sapien massa, ut iaculis justo laoreet sit amet. Sed gravida nisl eget augue ac sodales quam. ”</strong> -->
-								<!-- <div class="row"> -->
-									<!-- <div class="col-full"> -->
-										<!-- <div class="wrap-col post"> -->
-											<!-- <img src="images/u5.jpg" alt="" style="border-radius: 50%; width: auto;" /> -->
-											<!-- <h3>Monica Higgins, Client</h3> -->
-										<!-- </div> -->
-									<!-- </div> -->
-								<!-- </div> -->
-							</div>
-						</article>
+
 					</div>
 				</div>
 			</div>
@@ -153,15 +147,27 @@
 </div>
 </body>
 	<script src="js/jquery.raty.js"></script>
-	<script src="js/resturant.js"></script>
-	<script src="js/baseJS/baseJS.js"></script>
+
+
+
 <script>
+	var foodsID = getQueryString('id') ;
+
+	/// 菜品详情信息加载
+	getFoodDetail(foodsID);
+
 	/// 评价信息
-	getfoodEvaluate();
+	getFoodEvaluate(foodsID);
 	$(document).ready(function (){
 		/// 评价星级初始化
 		evaluateStartInit();
 	});
+
+	/// 去评论
+	function toEvaluate() {
+		window.location.href = "z_evaluate.html?id="+foodsID;
+	}
+
 
 </script>
 

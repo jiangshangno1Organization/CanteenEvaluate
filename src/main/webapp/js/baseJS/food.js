@@ -18,6 +18,23 @@ function getTomorrowAllFoods() {
     dataInit('2','3');
 }
 
+/// 食品 详情信息
+function getFoodDetail(foodsID) {
+    var foodsData = getFoodDetailData(foodsID);
+
+    /// 页面处理
+
+    // name
+    $('#name').html(foodsData.name);
+    // 简介
+    $('#mes').html(foodsData.memo3);
+    // 图片
+    var element = document.getElementById('pic');
+    element.src = foodsData.url;
+
+
+}
+
 /// 单个 菜品评价 html 生成
 function getFoodEvaluate(foodsID) {
     var evaluateList =  getFoodsEvaluateList(foodsID);

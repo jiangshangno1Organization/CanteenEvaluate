@@ -1,3 +1,5 @@
+<%@ page language="java" import="java.util.*"%>
+<%@page contentType="text/html charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -47,9 +49,9 @@
 		<div id='cssmenu' class="align-center">
 
 			<ul>
-				<li ><a href='z_index.html'><span>今日餐食</span></a></li>
-				<li><a href='z_indexTomorrow.html'><span>明日菜单</span></a></li>
-				<li class="active"><a href='z_stemployee.html'><span>服务员人员评价</span></a></li>
+				<li ><a href='z_index.jsp'><span>今日餐食</span></a></li>
+				<li><a href='z_indexTomorrow.jsp'><span>明日菜单</span></a></li>
+				<li class="active"><a href='z_stemployee.jsp'><span>服务员人员评价</span></a></li>
 				<li class='last'><a href='#'><span>服务员人员投诉</span></a></li>
 			</ul>
 		</div>

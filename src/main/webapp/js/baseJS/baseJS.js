@@ -51,11 +51,11 @@ function employeeCell(cell) {
     var name = cell.name ;
     var sex =  cell.sex ;
     var age =  cell.age;
-    var pl = '共 '+ 999 +' 条 评价 .';
+    var pl = '共 '+ cell.avgs +' 条 评价 .';
     var htmlCell =
         "\t<div  class=\"col-1-4\" onclick='jumpEmployeeEvaluateList(" + cell.id + ")'>" +
         "<div class=\"wrap-col post\">\n" +
-        "\t\t\t\t\t\t\t\t\t\t\t<img src=\"images/u1.jpg\" alt=\"\"/>\n" +
+        "\t\t\t\t\t\t\t\t\t\t\t<img src='"+cell.memo +"' alt=\"\"/>\n" +
         "\t\t\t\t\t\t\t\t\t\t\t<h3>"+name+"</h3>\n" +
         "\t\t\t\t\t\t\t\t\t\t\t<br/>\n" +
         "\t\t\t\t\t\t\t\t\t\t\t<p1>年龄 "+age+"</p1>\n" +
@@ -67,12 +67,12 @@ function employeeCell(cell) {
 }
 
 /// 服务员评价 cell
-function employeeEvaluateCell() {
+function employeeEvaluateCell(cell) {
     // time
     // mess
-    var mess =  "不错哦" ;  //cell.comments ;
-    var time =  "2020-04-05 12:52" ; //cell.date ;
-    var cellHtml = "\t<div class=\"row\">\n" +
+    var mess = cell.comments ; // "不错哦" ;  //cell.comments ;
+    var time = cell.date ;// "2020-04-05 12:52" ; //cell.date ;
+    var cellHtml =  "\t<div class=\"row\">\n" +
         "\t\t\t\t\t\t\t\t<HR style=\"FILTER:progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)\"width=\"100%\" color=#987cb9 SIZE=1>\n" +
         "\t\t\t\t\t\t\t\t<div >\n" +
         "\t\t\t\t\t\t\t\t\t<div class=\"row\"> \n" +
@@ -96,12 +96,12 @@ function employeeEvaluateCell() {
 
 /// 食物评论页面跳转
 function jumpEvaluateList(id){
-    window.location.href = "z_evaluateList.html?id="+id;
+    window.location.href = "z_evaluateList.jsp?id="+id;
 }
 
 /// 服务员评论页面跳转
 function jumpEmployeeEvaluateList(id){
-    window.location.href = "z_employeeEvaluateList.html?id="+id;
+    window.location.href = "z_employeeEvaluateList.jsp?id="+id;
 }
 
 

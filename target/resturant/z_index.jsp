@@ -1,7 +1,9 @@
 <%@ page language="java" import="java.util.*"%>
 <%@page contentType="text/html charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
-	<head><!-- Basic Page Needs
+	<head>
+			<%--	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>--%>
+		<!-- Basic Page Needs
       ================================================== -->
 		<meta charset="utf-8"/>
 		<title>zGoodFood</title>
@@ -24,8 +26,13 @@
 		<link rel="stylesheet" href="css/menu.css"/>
 		<script src="js/jquery1111.min.js" type="text/javascript"></script>
 		<script src="js/script.js"></script>
+
+
+
+
+		<script src="js/baseJS/food.js?v=1.1" charset="utf-8" type="text/javascript"></script>
+		<script src="js/baseJS/apiRequest.js?v=1.1" charset="utf-8" type="text/javascript"></script>
 		<script src="js/baseJS/baseJS.js?v=1.1" charset="utf-8" type="text/javascript"></script>
-		<script src="js/resturant.js"></script>
 
 
 		<!--[if lt IE 9]>
@@ -53,8 +60,8 @@
 
 					<ul>
 						<li class="active"><a href='#'><span>今日餐食</span></a></li>
-						<li><a href='z_indexTomorrow.html'><span>明日菜单</span></a></li>
-						<li><a href='z_stemployee.html'><span>服务员人员评价</span></a></li>
+						<li><a href='z_indexTomorrow.jsp'><span>明日菜单</span></a></li>
+						<li><a href='z_stemployee.jsp'><span>服务员人员评价</span></a></li>
 						<li class='last'><a href='#'><span>服务员人员投诉</span></a></li>
 					</ul>
 				</div>
@@ -78,15 +85,19 @@
 								</div>
 								<div class="art-content">
 									<div class="row" id = "morning">
-										<div class="col-1-3 post" style="padding :10px" onclick="fd()" >
-											<img src="images/menu-12.jpg" alt=""/>
-											<h3>萝卜丝炒牛肉测试静态菜品</h3>
-											<p> 共39 条 评价 .</p>
-											<p>4 分</p>
-											<div class ="pf" data-pf="3"  style="cursor: pointer;height:30px"></div>
-										</div>
+										<!--								<div class="col-1-3 post" style="padding :10px" onclick="fd()" >-->
+										<!--									<img src="images/menu-12.jpg" alt=""/>-->
+										<!--									<h3>萝卜丝炒牛肉测试静态菜品</h3>-->
+										<!--									<p> 共39 条 评价 .</p>-->
+										<!--									<p>4 分</p>-->
+										<!--									<div class ="pf" data-pf="3"  style="cursor: pointer;height:30px"></div>-->
+										<!--								</div>-->
+
+
 									</div>
 								</div>
+
+
 							</article>
 
 							<!-- 午餐 -->
@@ -97,14 +108,16 @@
 								</div>
 								<div class="art-content">
 									<div class="row" id="lunch">
-										<div class="col-1-3">
 
-											<div class="wrap-col post">
-												<img src="images/menu-12.jpg" alt=""/>
-												<h3>Small Groups 测试静态菜品</h3>
-												<p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Et vel quod legimus, graeci electram ocurreret at his.</p>
-											</div>
-										</div>
+										<!--								<div class="col-1-3">-->
+										<!--									<div class="wrap-col post">-->
+										<!--										<img src="images/menu-12.jpg" alt=""/>-->
+										<!--										<h3>Small Groups 测试静态菜品</h3>-->
+										<!--										<p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Et vel quod legimus, graeci electram ocurreret at his.</p>-->
+										<!--									</div>-->
+										<!--								</div>-->
+
+
 									</div>
 								</div>
 							</article>
@@ -117,14 +130,15 @@
 								</div>
 								<div class="art-content">
 									<div class="row" id="dinner">
-										<div class="col-1-3">
 
-											<div class="wrap-col post">
-												<img src="images/menu-12.jpg" alt=""/>
-												<h3>Small Groups 测试静态菜品</h3>
-												<p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Et vel quod legimus, graeci electram ocurreret at his.</p>
-											</div>
-										</div>
+										<!--								<div class="col-1-3">-->
+										<!--									<div class="wrap-col post">-->
+										<!--										<img src="images/menu-12.jpg" alt=""/>-->
+										<!--										<h3>Small Groups 测试静态菜品</h3>-->
+										<!--										<p>His primis omittam intellegat cu, voluptua appetere mea ad, eu harum oporteat vix. Et vel quod legimus, graeci electram ocurreret at his.</p>-->
+										<!--									</div>-->
+										<!--								</div>-->
+
 									</div>
 								</div>
 							</article>
@@ -141,10 +155,6 @@
 
 	<script src="js/jquery.raty.js"></script>
 	<script>
-
-		function fd (i){
-		jumurl("z_evaluateList.html");
-		}
 
 		/// 获取菜品列表
 		getTodayAllFoods();

@@ -65,14 +65,14 @@
 									<div class="row">
 										<div class="col-full">
 											<div class="wrap-col post">
-												<img src="images/u5.jpg" alt="" style="border-radius: 50%; width: auto;" />
-												<h3>姓名：小童</h3>
+												<img id="pic" src="images/u5.jpg" alt="" style="border-radius: 50%; width: auto;" />
+												<h3 id="name">姓名：小童</h3>
 											</div>
 										</div>
 									</div>
 									<br/>
 									<br/>
-									<strong>“自我介绍 简介 Aenean ultrices sapien ut justo laoreet eleifend. Pellentesque imperdiet, lorem ut consectetur tincidunt, arcu nisl rhoncus, dignissim sodales magna magna et dui. Donec quis odio blandit arcu tincidunt ultrices sed vitae tortor. Pellentesque tempor auctor sapien eget maximus. Donec auctor sapien massa, ut iaculis justo laoreet sit amet. Sed gravida nisl eget augue ac sodales quam. ”</strong>
+									<strong id="mes">“自我介绍 简介 Aenean ultrices sapien ut justo laoreet eleifend. Pellentesque imperdiet, lorem ut consectetur tincidunt, arcu nisl rhoncus, dignissim sodales magna magna et dui. Donec quis odio blandit arcu tincidunt ultrices sed vitae tortor. Pellentesque tempor auctor sapien eget maximus. Donec auctor sapien massa, ut iaculis justo laoreet sit amet. Sed gravida nisl eget augue ac sodales quam. ”</strong>
 								</div>
 							<a onclick="toEvaluate()" class="button" >去评价</a>
 
@@ -84,28 +84,28 @@
 							</div>
 
 							<div id='evaluate' class="art-content">
-								<div class="row">
-									<HR style="FILTER:progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)"width="100%" color=#987cb9 SIZE=1>
-								<div >
+<!--								<div class="row">-->
+<!--									<HR style="FILTER:progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)"width="100%" color=#987cb9 SIZE=1>-->
+<!--								<div >-->
 
-								<div class="row">
-										<div class="col-1-1">
-											<div class="wrap-col post" >
-												<span >2020-04-05 12:52</span>
-											</div>
-										</div>
-									</div>
+<!--								<div class="row">-->
+<!--										<div class="col-1-1">-->
+<!--											<div class="wrap-col post" >-->
+<!--												<span >2020-04-05 12:52</span>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
 
-									<div class="row">
-										<div class="col-1-1">
-											<div class="wrap-col" >
-												<span >很好吃的评价模板</span>
-											</div>
-										</div>
-									</div>
+<!--									<div class="row">-->
+<!--										<div class="col-1-1">-->
+<!--											<div class="wrap-col" >-->
+<!--												<span >很好吃的评价模板</span>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
 
-									</div>
-								</div>
+<!--									</div>-->
+<!--								</div>-->
 							</div>
 						</article>
 						</div>
@@ -122,6 +122,10 @@
 </body>
 <script>
 	var employeeID = getQueryString('id') ;
+
+	/// 服务员详情加载
+	getEmployeeDetail(employeeID);
+
 	/// 服务员所有评价加载
 	getEmployeeEvaluate(employeeID);
 	/// 去评论
