@@ -29,6 +29,7 @@
 	<script src="js/jquery1111.min.js" type="text/javascript"></script>
 	<script src="js/script.js"></script>
 
+	<script src="js/baseJS/baseJS.js"></script>
 </head>
 
 <body>
@@ -89,7 +90,7 @@
 							</div>
 								<div class="row">
 									<div id="contact_form">
-										<form name="form1" id="ff" method="post" action="contact.php">
+										<form name="form1" id="ff" method="post" action="">
 
 											<div class="row">
 												<div class="col-1-4">
@@ -172,8 +173,7 @@
 </div>
 </body>
 <script src="js/jquery.raty.js"></script>
-<script src="js/resturant.js"></script>
-<script src="js/baseJS/baseJS.js"></script>
+
 <script>
 	$(document).ready(function (){
 		/// 评价星级初始化
