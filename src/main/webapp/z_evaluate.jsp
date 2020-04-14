@@ -169,7 +169,7 @@
 										<div class="row">
 											<div class="col-1-4">
 												<div class="wrap-col">
-													<h1>厨艺</h1>
+													<h1>综合评分</h1>
 												</div>
 											</div>
 											<div class="col-3-4">
@@ -179,18 +179,18 @@
 											</div>
 										</div>
 
-										<div class="row">
-											<div class="col-1-4">
-												<div class="wrap-col">
-													<h1>服务</h1>
-												</div>
-											</div>
-											<div class="col-3-4">
-												<div class="wrap-col" style="float: left" >
-													<div id="fw" class ="pf" data-pf="0"  style="cursor: pointer;height:30px;"></div>
-												</div>
-											</div>
-										</div>
+<%--										<div class="row">--%>
+<%--											<div class="col-1-4">--%>
+<%--												<div class="wrap-col">--%>
+<%--													<h1>服务</h1>--%>
+<%--												</div>--%>
+<%--											</div>--%>
+<%--											<div class="col-3-4">--%>
+<%--												<div class="wrap-col" style="float: left" >--%>
+<%--													<div id="fw" class ="pf" data-pf="0"  style="cursor: pointer;height:30px;"></div>--%>
+<%--												</div>--%>
+<%--											</div>--%>
+<%--										</div>--%>
 
 										<label class="row">
 											<div class="wrap-col">
