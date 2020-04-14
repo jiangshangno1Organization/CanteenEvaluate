@@ -89,7 +89,7 @@ public class UserController {
         if(file.getOriginalFilename() != null && !file.getOriginalFilename().equals("")) {
             if (file.getOriginalFilename().substring((file.getOriginalFilename().lastIndexOf(".")) + 1).equals("jpg")) {
                 dataName = new SimpleDateFormat("yyyyMMdd").format(new Date()) + "" + System.currentTimeMillis() + ".jpg";
-                String path="E:/excels/resturant/target/resturant/images/foodsPic/"+dataName;
+                String path=request.getSession().getServletContext().getRealPath("/images/foodsPic")+dataName;
                 File file1=new File(path);
                 //String path = request.getSession().getServletContext().getRealPath("/images/" +dataName);
                 //file.transferTo(Paths.get(path));
