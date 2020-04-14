@@ -91,7 +91,7 @@ function getFoodDetailData(foodsID) {
     var res  = null ;
     $.ajax({
         type: "GET",
-        url:baseS+"foodcontro/getfooddetail",
+        url:baseS + "foodcontro/getfooddetail",
         data :{'id' :foodsID},
         async: false,
         error: function (request) {
