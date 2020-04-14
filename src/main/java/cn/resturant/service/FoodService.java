@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface FoodService {
     public List<Foodex>getlist(int num,int day);//获取今日三餐菜谱。
-    public boolean evalute(EvaluateDto evaluateDto);
+    public boolean evalute(EvaluateDto evaluateDto);//评价食物以及评价厨师
+    public List<Foodex>getfood();
 
 }

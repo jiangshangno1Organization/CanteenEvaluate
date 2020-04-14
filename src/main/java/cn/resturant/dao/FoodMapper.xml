@@ -122,8 +122,29 @@
    AVG(comments.`memo2`) AS fragrance,
    AVG(comments.`memo3`) AS taste,
    AVG(comments.`memo4`) AS shape
-   FROM food RIGHT JOIN comments ON food.`id`=comments.`parentsid` AND comments.`typeid`='1'
+   FROM food LEFT JOIN comments ON food.`id`=comments.`parentsid` AND comments.`typeid`='1'
 WHERE food.`memo1`LIKE concat ('%', #{type},'%') AND food.`name` IS NOT NULL AND food.`memo2`LIKE concat ('%', #{days},'%')
  GROUP BY food.`id`
+  </select>
+  <select id="selectallfoods" resultType="cn.resturant.entity.dto.Foodlist">
+
+         SELECT food.id ,food.url, food.`name` ,FIND_IN_SET('1',food.memo1) AS morning,FIND_IN_SET('2',food.memo1) AS lunch,FIND_IN_SET('3',food.memo1) AS dinner,
+         FIND_IN_SET('1',food.memo2) AS today,FIND_IN_SET('2',food.memo2) AS tommrow,
+          (AVG(comments.`memo1`)+AVG(comments.`memo2`)+AVG(comments.`memo3`)+AVG(comments.`memo4`))/4 AS avgs
+   FROM food left JOIN comments ON food.`id`=comments.`parentsid` AND comments.`typeid`='1'
+ GROUP BY food.`id`
+
+  </select>
+  <update id="updateto" >
+             UPDATE food SET memo2=''
+  </update>
+  <select id="yuce" parameterType="string" resultType="cn.resturant.entity.Foodex">
+     SELECT food.id ,food.url, food.`name` ,COUNT(*) AS counts ,(AVG(comments.`memo1`)+AVG(comments.`memo2`)+AVG(comments.`memo3`)+AVG(comments.`memo4`))/4 AS avgs,
+   AVG(comments.`memo1`) AS color,
+   AVG(comments.`memo2`) AS fragrance,
+   AVG(comments.`memo3`) AS taste,
+   AVG(comments.`memo4`) AS shape
+   FROM food LEFT JOIN comments ON food.`id`=comments.`parentsid` AND comments.`typeid`='1'
+ GROUP BY food.`id` ORDER BY ${_parameter} DESC LIMIT 2
   </select>
 </mapper>

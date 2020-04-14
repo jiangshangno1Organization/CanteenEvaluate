@@ -1,5 +1,8 @@
 package cn.resturant.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Comments {
@@ -14,7 +17,7 @@ public class Comments {
     private Integer typeid;
 
     private String memo2;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date date;
 
     private String memo3;

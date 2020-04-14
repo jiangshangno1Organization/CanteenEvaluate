@@ -9,7 +9,7 @@
       <arg column="memo1" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="typeid" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="memo2" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="date" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="memo3" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="memo4" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
@@ -33,7 +33,7 @@
       date, memo3, memo4)
     values (#{id,jdbcType=INTEGER}, #{parentsid,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR}, 
       #{memo1,jdbcType=VARCHAR}, #{typeid,jdbcType=INTEGER}, #{memo2,jdbcType=VARCHAR}, 
-      #{date,jdbcType=DATE}, #{memo3,jdbcType=VARCHAR}, #{memo4,jdbcType=VARCHAR})
+      #{date,jdbcType=TIMESTAMP}, #{memo3,jdbcType=VARCHAR}, #{memo4,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.resturant.entity.Comments" >
     insert into comments
@@ -86,7 +86,7 @@
         #{memo2,jdbcType=VARCHAR},
       </if>
       <if test="date != null" >
-        #{date,jdbcType=DATE},
+        #{date,jdbcType=TIMESTAMP},
       </if>
       <if test="memo3 != null" >
         #{memo3,jdbcType=VARCHAR},
@@ -139,8 +139,8 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectcombyfood" parameterType="string" resultType="cn.resturant.entity.Commentex">
-      SELECT *,(memo1+memo2+memo3+memo4)/4 AS avgs
-      FROM comments WHERE parentsid=#{id} AND typeid='1'
+      SELECT  *,(memo1+memo2+memo3+memo4)/4 AS avgs,comments.date
+      FROM comments WHERE parentsid=#{id} AND typeid='1' order by date desc
   </select>
   <select id="selectcookcount" parameterType="int" resultType="int">
     SELECT COUNT(memo1)FROM comments WHERE typeid='3' AND parentsid=#{id} AND memo1 IS NOT NULL
@@ -148,5 +148,8 @@
   <select id="selectcooksum" parameterType="int" resultType="int">
         SELECT sum(memo1)FROM comments WHERE typeid='3' AND parentsid=#{id} AND memo1 IS NOT NULL
 
+  </select>
+  <select id="selectcookorsecomm" resultType="cn.resturant.entity.Commentex" parameterType="map">
+    select * from comments where parentsid=#{id} and typeid=#{typeid} order by date desc
   </select>
 </mapper>
