@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.resturant.dao.CookermainMapper" >
+  <resultMap id="BaseResultMap" type="cn.resturant.entity.Cookermain" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="cookid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="jianjie" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="memo3" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="memo4" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cookid, jianjie, memo3, memo4
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cookerex
+    where cookid = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cookerex
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.resturant.entity.Cookermain" >
+    insert into cookerex (id, cookid, jianjie, 
+      memo3, memo4)
+    values (#{id,jdbcType=INTEGER}, #{cookid,jdbcType=INTEGER}, #{jianjie,jdbcType=VARCHAR}, 
+      #{memo3,jdbcType=VARCHAR}, #{memo4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.resturant.entity.Cookermain" >
+    insert into cookerex
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cookid != null" >
+        cookid,
+      </if>
+      <if test="jianjie != null" >
+        jianjie,
+      </if>
+      <if test="memo3 != null" >
+        memo3,
+      </if>
+      <if test="memo4 != null" >
+        memo4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cookid != null" >
+        #{cookid,jdbcType=INTEGER},
+      </if>
+      <if test="jianjie != null" >
+        #{jianjie,jdbcType=VARCHAR},
+      </if>
+      <if test="memo3 != null" >
+        #{memo3,jdbcType=VARCHAR},
+      </if>
+      <if test="memo4 != null" >
+        #{memo4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.resturant.entity.Cookermain" >
+    update cookerex
+    <set >
+      <if test="cookid != null" >
+        cookid = #{cookid,jdbcType=INTEGER},
+      </if>
+      <if test="jianjie != null" >
+        jianjie = #{jianjie,jdbcType=VARCHAR},
+      </if>
+      <if test="memo3 != null" >
+        memo3 = #{memo3,jdbcType=VARCHAR},
+      </if>
+      <if test="memo4 != null" >
+        memo4 = #{memo4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.resturant.entity.Cookermain" >
+    update cookerex
+    set cookid = #{cookid,jdbcType=INTEGER},
+      jianjie = #{jianjie,jdbcType=VARCHAR},
+      memo3 = #{memo3,jdbcType=VARCHAR},
+      memo4 = #{memo4,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

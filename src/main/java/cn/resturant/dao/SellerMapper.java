@@ -1,6 +1,9 @@
 package cn.resturant.dao;
 
 import cn.resturant.entity.Seller;
+import cn.resturant.entity.Sellerex;
+
+import java.util.List;
 
 public interface SellerMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,6 @@ public interface SellerMapper {
     int updateByPrimaryKeySelective(Seller record);
 
     int updateByPrimaryKey(Seller record);
+
+    List<Sellerex>selectall();
 }

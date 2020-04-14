@@ -75,7 +75,7 @@
 <!--           selectByExampleQueryId="false">-->
 <!--      </table>-->
 
-        <table tableName="cooker" domainObjectName="Cooker"
+        <table tableName="cookerex" domainObjectName="Cookermain"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

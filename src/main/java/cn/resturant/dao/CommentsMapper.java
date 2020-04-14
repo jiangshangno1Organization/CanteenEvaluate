@@ -4,6 +4,7 @@ import cn.resturant.entity.Commentex;
 import cn.resturant.entity.Comments;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CommentsMapper {
     int deleteByPrimaryKey(Integer id);
@@ -23,4 +24,6 @@ public interface CommentsMapper {
     int selectcooksum(int id);
 
     int selectcookcount(int id);
+
+    List<Commentex> selectcookorsecomm( Map<String,Object> map);
 }

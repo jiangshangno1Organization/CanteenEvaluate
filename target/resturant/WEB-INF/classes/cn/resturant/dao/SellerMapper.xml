@@ -21,6 +21,9 @@
     from seller
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectall" resultType="cn.resturant.entity.Sellerex">
+
+SELECT *,COUNT(*) as avgs FROM seller LEFT JOIN comments ON seller.`id`=comments.`parentsid` WHERE (comments.`typeid`='2'OR comments.`typeid` IS NULL) GROUP BY seller.`id`  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from seller
     where id = #{id,jdbcType=INTEGER}

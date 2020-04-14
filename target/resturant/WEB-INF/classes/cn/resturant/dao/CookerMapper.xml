@@ -20,9 +20,14 @@
     from cooker
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectcookerex" resultType="cn.resturant.entity.Cookerex" parameterType="int">
+    select *,cookerex.jianjie from cooker left join cookerex on cooker.id=cookerex.cookid where cooker.id=#{id}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from cooker
-    where id = #{id,jdbcType=INTEGER}
+    delete from cooker where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteex" parameterType="int">
+        delete from cookerex where cookid = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.resturant.entity.Cooker" >
     insert into cooker (id, name, avgs, 
@@ -32,7 +37,7 @@
       #{memo2,jdbcType=VARCHAR}, #{memo3,jdbcType=VARCHAR}, #{memo4,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.resturant.entity.Cooker" >
+  <insert id="insertSelective" parameterType="cn.resturant.entity.Cooker"  keyProperty="id" useGeneratedKeys="true">
     insert into cooker
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -109,4 +114,10 @@
     update cooker
     set avgs=#{avgs} where id=#{id}
   </update>
+  <select id="selectall" resultType="cn.resturant.entity.Cookerex">
+    select *,cookerex.jianjie from cooker left join cookerex on cooker.id=cookerex.cookid ORDER BY cooker.avgs desc
+  </select>
+  <select id="selectone" resultType="cn.resturant.entity.Cooker" parameterType="cn.resturant.entity.Cooker">
+    select * from cooker where name=#{name} and memo2=#{memo2} and memo3=#{memo3} and memo4=#{memo4}
+  </select>
 </mapper>

@@ -9,11 +9,11 @@ public class EvaluateDto {
     private String foodcomments;
     private String cooksmemo1;
     private String cooksmemo2;
-
+    private String sellercomments;
     public EvaluateDto() {
     }
 
-    public EvaluateDto(int id, String memo1, String memo2, String memo3, String memo4, String foodcomments, String cooksmemo1, String cooksmemo2) {
+    public EvaluateDto(int id, String memo1, String memo2, String memo3, String memo4, String foodcomments, String cooksmemo1, String cooksmemo2, String sellercomments) {
         this.id = id;
         this.memo1 = memo1;
         this.memo2 = memo2;
@@ -22,6 +22,15 @@ public class EvaluateDto {
         this.foodcomments = foodcomments;
         this.cooksmemo1 = cooksmemo1;
         this.cooksmemo2 = cooksmemo2;
+        this.sellercomments = sellercomments;
+    }
+
+    public String getSellercomments() {
+        return sellercomments;
+    }
+
+    public void setSellercomments(String sellercomments) {
+        this.sellercomments = sellercomments;
     }
 
     public int getId() {
