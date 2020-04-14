@@ -1,5 +1,4 @@
-﻿var baseUrl = "http://172.16.1.33:8089/foodcontro/";
-var baseS = "http://172.16.1.33:8089/";
+﻿var baseS = "http://localhost:8089/";
 
 /// 获取所有食物列表
 /// （用餐类型）1为早餐，2为中餐，3为晚餐
