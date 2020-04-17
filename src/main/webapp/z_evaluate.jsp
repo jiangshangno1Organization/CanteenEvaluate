@@ -52,7 +52,7 @@
 				<li class="active"><a href='z_index.jsp'><span>今日餐食</span></a></li>
 				<li><a href='z_indexTomorrow.jsp'><span>明日菜单</span></a></li>
 				<li><a href='z_stemployee.jsp'><span>服务员人员评价</span></a></li>
-				<li class='last'><a href='#'><span>服务员人员投诉</span></a></li>
+				<li class='last'><a href='z_event.jsp'><span>突发事件</span></a></li>
 			</ul>
 		</div>
 	</header>
